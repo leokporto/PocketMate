@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketMate.Core", "PocketMate.Core\PocketMate.Core.csproj", "{FF93D603-ACB2-48D5-B565-0CCAADB1783D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketMate.Api", "PocketMate.Api\PocketMate.Api.csproj", "{FDBB406A-7A5B-41B7-8C33-CB461747FC3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{FF93D603-ACB2-48D5-B565-0CCAADB1783D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF93D603-ACB2-48D5-B565-0CCAADB1783D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF93D603-ACB2-48D5-B565-0CCAADB1783D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDBB406A-7A5B-41B7-8C33-CB461747FC3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDBB406A-7A5B-41B7-8C33-CB461747FC3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDBB406A-7A5B-41B7-8C33-CB461747FC3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDBB406A-7A5B-41B7-8C33-CB461747FC3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
