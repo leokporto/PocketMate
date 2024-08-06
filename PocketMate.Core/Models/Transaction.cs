@@ -2,7 +2,7 @@
 
 namespace PocketMate.Core.Models
 {
-	public abstract class Transaction
+	public class Transaction
 	{
 		public long Id { get; set; }
 		public string Title { get; set; } = string.Empty;
@@ -11,7 +11,7 @@ namespace PocketMate.Core.Models
 
 		public DateTime? AccountedAt { get; set; }
 
-		public eTransactionType Type { get; init; } = eTransactionType.Withdraw;
+		public eTransactionType Type { get; set; } = eTransactionType.Withdraw;
 
 		public decimal Amount { get; set; }
 

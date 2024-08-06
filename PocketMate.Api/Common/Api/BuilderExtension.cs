@@ -75,9 +75,9 @@ namespace PocketMate.Api.Common.Api
 				.Services
 				.AddTransient<ICategoryHandler, CategoryHandler>();
 
-			//builder
-			//	.Services
-			//	.AddTransient<ITransactionHandler, TransactionHandler>();
+			builder
+				.Services
+				.AddTransient<ITransactionHandler, TransactionHandler>();
 
 			//builder
 			//	.Services

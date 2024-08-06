@@ -9,10 +9,7 @@ namespace PocketMate.Api.Data.Mappings
 	{
 		public void Configure(EntityTypeBuilder<Transaction> builder)
 		{ 
-			builder.ToTable("Transaction")
-				.HasDiscriminator<eTransactionType>("Type")
-				.HasValue<WithdrawTransaction>(eTransactionType.Withdraw)
-				.HasValue<DepositTransaction>(eTransactionType.Deposit);
+			builder.ToTable("Transaction");
 
 			builder.HasKey(x => x.Id);
 
