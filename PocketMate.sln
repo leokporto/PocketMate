@@ -3,19 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketMate.Core", "PocketMate.Core\PocketMate.Core.csproj", "{FF93D603-ACB2-48D5-B565-0CCAADB1783D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocketMate.Core", "PocketMate.Core\PocketMate.Core.csproj", "{FF93D603-ACB2-48D5-B565-0CCAADB1783D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketMate.Api", "PocketMate.Api\PocketMate.Api.csproj", "{FDBB406A-7A5B-41B7-8C33-CB461747FC3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocketMate.Api", "PocketMate.Api\PocketMate.Api.csproj", "{FDBB406A-7A5B-41B7-8C33-CB461747FC3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketMate.Web", "PocketMate.Web\PocketMate.Web.csproj", "{0B22989D-CF7A-4769-BE3A-079A67738157}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocketMate.Web", "PocketMate.Web\PocketMate.Web.csproj", "{0B22989D-CF7A-4769-BE3A-079A67738157}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FF93D603-ACB2-48D5-B565-0CCAADB1783D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +27,11 @@ Global
 		{0B22989D-CF7A-4769-BE3A-079A67738157}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B22989D-CF7A-4769-BE3A-079A67738157}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B22989D-CF7A-4769-BE3A-079A67738157}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF159692-68CB-4EE1-8493-4159A0B9F62A}
 	EndGlobalSection
 EndGlobal

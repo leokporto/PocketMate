@@ -1,0 +1,32 @@
+﻿@page "/register"
+@layout HeadlessLayout
+
+<PageTitle>PocketMate - Register</PageTitle>
+
+<MudGrid Justify="Justify.Center">
+    <MudItem xs="12" sm="12" md="8" lg="6" xl="6" xxl="6">
+        <MudPaper Class="mud-width-full pa-8">
+            <div class="d-flex justify-center pb-8 pt-8">
+                <img src="images/wallet.png" width="150" alt="PocketMate" />
+            </div>
+            <MudForm @ref="_mudForm">
+                <MudTextField class="mt-8" T="string" Label="E-Mail" Required="true" InputType="InputType.Email"
+                              RequiredError="Invalid e-mail" Validation="@(new EmailAddressAttribute { ErrorMessage = "Invalid e-mail"})" />
+
+                <MudTextField class="mt-8" T="string" InputType="InputType.Password" Placeholder="Password" Required="true" Label="Password"
+                              RequiredError="Password is required" />
+            </MudForm>
+
+            <div class="d-flex mt-8">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary">Register</MudButton>
+                <MudSpacer />
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" Href="/login">login</MudButton>
+            </div>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+@code
+{
+    MudForm? _mudForm;
+}
