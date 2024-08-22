@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PocketMate.Core
+﻿namespace PocketMate.Core
 {
-    public static class Configuration
+	public static class Configuration
     {
         public const int DEFAULT_STATUS_CODE = 200;
         public const int DEFAULT_PAGE_NUMBER = 1;

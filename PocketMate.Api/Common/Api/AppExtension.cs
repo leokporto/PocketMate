@@ -8,7 +8,7 @@ namespace PocketMate.Api.Common.Api
 		{
 			app.UseSwagger();
 			app.UseSwaggerUI();
-			//app.MapSwagger().RequireAuthorization();
+			app.MapSwagger().RequireAuthorization();
 		}
 
 		public static void UseSecurity(this WebApplication app)

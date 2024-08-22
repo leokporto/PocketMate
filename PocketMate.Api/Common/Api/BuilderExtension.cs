@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using PocketMate.Api.Data;
 using PocketMate.Api.Handlers;
-using PocketMate.Core.Handlers;
+using PocketMate.Api.Models;
 using PocketMate.Core;
-using Microsoft.EntityFrameworkCore;
+using PocketMate.Core.Handlers;
 
 namespace PocketMate.Api.Common.Api
 {
@@ -19,7 +20,7 @@ namespace PocketMate.Api.Common.Api
 				?? string.Empty;
 			Configuration.BackendUrl = builder.Configuration.GetValue<string>("BackendUrl") ?? string.Empty;
 			Configuration.FrontendUrl = builder.Configuration.GetValue<string>("FrontendUrl") ?? string.Empty;
-			//ApiConfiguration.StripeApiKey = builder.Configuration.GetValue<string>("StripeApiKey") ?? string.Empty;
+			ApiConfiguration.StripeApiKey = builder.Configuration.GetValue<string>("StripeApiKey") ?? string.Empty;
 
 			//StripeConfiguration.ApiKey = ApiConfiguration.StripeApiKey;
 		}
@@ -41,32 +42,32 @@ namespace PocketMate.Api.Common.Api
 
 		public static void AddDataContexts(this WebApplicationBuilder builder)
 		{
-			builder
-				.Services
+			builder.Services
 				.AddDbContext<AppDbContext>(
 					x => { x.UseNpgsql(Configuration.ConnectionString); });
 
-			//.AddIdentityCore<User>()
-			//.AddRoles<IdentityRole<long>>()
-			//.AddEntityFrameworkStores<AppDbContext>()
-			//.AddApiEndpoints();
+			builder.Services
+				.AddIdentityCore<User>()
+				.AddRoles<IdentityRole<long>>()
+				.AddEntityFrameworkStores<AppDbContext>()
+				.AddApiEndpoints();
 
 		}
 
 		public static void AddCrossOrigin(this WebApplicationBuilder builder)
 		{
-			//builder.Services.AddCors(
-			//	options => options.AddPolicy(
-			//		ApiConfiguration.CorsPolicyName,
-			//		policy => policy
-			//			.WithOrigins([
-			//				Configuration.BackendUrl,
-			//			Configuration.FrontendUrl
-			//			])
-			//			.AllowAnyMethod()
-			//			.AllowAnyHeader()
-			//			.AllowCredentials()
-			//	));
+			builder.Services.AddCors(
+				options => options.AddPolicy(
+					ApiConfiguration.CorsPolicyName,
+					policy => policy
+						.WithOrigins([
+							Configuration.BackendUrl,
+							Configuration.FrontendUrl
+						])
+						.AllowAnyMethod()
+						.AllowAnyHeader()
+						.AllowCredentials()
+				));
 		}
 
 		public static void AddServices(this WebApplicationBuilder builder)

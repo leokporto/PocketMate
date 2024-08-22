@@ -16,10 +16,12 @@ namespace PocketMate.Api.Data.Mappings
 				.HasMaxLength(80)
 				.HasColumnType("VARCHAR")
 				.IsRequired(true);
+
 			builder.Property(x => x.Description)
 				.IsRequired(false)
 				.HasColumnType("VARCHAR")
 				.HasMaxLength(255);
+
 			builder.Property(x => x.UserId)
 				.HasMaxLength(160)
 				.HasColumnType("VARCHAR")

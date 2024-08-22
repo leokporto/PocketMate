@@ -17,16 +17,21 @@ namespace PocketMate.Api.Data.Mappings
 				.HasMaxLength(80)
 				.HasColumnType("VARCHAR")
 				.IsRequired(true);
+
 			builder.Property(x => x.Type)
 				.IsRequired(true)
 				.HasColumnType("SMALLINT");
+
 			builder.Property(x => x.Amount)
 				.IsRequired(true)
 				.HasColumnType("MONEY");
+
 			builder.Property(x => x.CreatedAt)
 				.IsRequired(true);
+
 			builder.Property(x => x.AccountedAt)
 				.IsRequired(false);
+
 			builder.Property(x => x.UserId)
 				.IsRequired(true)
 				.HasColumnType("VARCHAR")

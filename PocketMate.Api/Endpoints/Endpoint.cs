@@ -1,6 +1,8 @@
 ﻿using PocketMate.Api.Common.Api;
 using PocketMate.Api.Endpoints.Categories;
+using PocketMate.Api.Endpoints.Identity;
 using PocketMate.Api.Endpoints.Transactions;
+using PocketMate.Api.Models;
 
 namespace PocketMate.Api.Endpoints
 {
@@ -17,7 +19,7 @@ namespace PocketMate.Api.Endpoints
 
 			endpoints.MapGroup("v1/categories")
 				.WithTags("Categories")
-				//.RequireAuthorization()
+				.RequireAuthorization()
 				.MapEndpoint<CreateCategoryEndpoint>()
 				.MapEndpoint<UpdateCategoryEndpoint>()
 				.MapEndpoint<DeleteCategoryEndpoint>()
@@ -33,14 +35,14 @@ namespace PocketMate.Api.Endpoints
 				.MapEndpoint<GetTransactionByIdEndpoint>()
 				.MapEndpoint<GetTransactionsByPeriodEndpoint>();
 
-			//endpoints.MapGroup("v1/identity")
-			//	.WithTags("Identity")
-			//	.MapIdentityApi<User>();
+			endpoints.MapGroup("v1/identity")
+				.WithTags("Identity")
+				.MapIdentityApi<User>();
 
-			//endpoints.MapGroup("v1/identity")
-			//	.WithTags("Identity")
-			//	.MapEndpoint<LogoutEndpoint>()
-			//	.MapEndpoint<GetRolesEndpoint>();
+			endpoints.MapGroup("v1/identity")
+				.WithTags("Identity")
+				.MapEndpoint<LogoutEndpoint>()
+				.MapEndpoint<GetRolesEndpoint>();
 
 			//endpoints.MapGroup("/v1/reports")
 			//	.WithTags("Reports")
