@@ -1,5 +1,6 @@
 ﻿@page "/register"
 @layout HeadlessLayout
+@inherits RegisterPage
 
 <PageTitle>PocketMate - Register</PageTitle>
 
@@ -9,7 +10,7 @@
             <div class="d-flex justify-center pb-8 pt-8">
                 <img src="images/wallet.png" width="150" alt="PocketMate" />
             </div>
-            <MudForm @ref="_mudForm">
+            <MudForm @ref="MudForm">
                 <MudTextField class="mt-8" T="string" Label="E-Mail" Required="true" InputType="InputType.Email"
                               RequiredError="Invalid e-mail" Validation="@(new EmailAddressAttribute { ErrorMessage = "Invalid e-mail"})" />
 
@@ -25,8 +26,3 @@
         </MudPaper>
     </MudItem>
 </MudGrid>
-
-@code
-{
-    MudForm? _mudForm;
-}
