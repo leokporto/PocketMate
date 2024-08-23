@@ -5,6 +5,9 @@ namespace PocketMate.Web
 {
     public static class Configuration
     {
+        public const string HTTP_CLIENT_NAME = "PocketMateHttpClient";
+
+        public const string BACKEND_URL = "http://localhost:5160";
         /*
          Pallettes from https://coolors.co/32bea6-fbfbff-1e2d2f-f7cb15-4381c1
         #32BEA6
