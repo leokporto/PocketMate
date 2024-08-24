@@ -3,18 +3,30 @@
 <MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode="_isDarkMode" Theme="Configuration.Theme" />
 <MudSnackbarProvider />
 
-<MudLayout>
-    <MudAppBar>
-        <h1>PocketMate</h1>
-        <MudSpacer />
-        <MudSwitch T="bool" @bind-Value="_isDarkMode" />
-    </MudAppBar>
-    <MudMainContent>
-        <MudContainer>
-            @Body
-        </MudContainer>
-    </MudMainContent>
-</MudLayout>
+<AuthorizeView>
+    <Authorized>
+        <MudLayout>
+            <MudAppBar>
+                <h1>PocketMate</h1>
+                <MudSpacer />
+                <MudText Typo="Typo.caption">Welcome, @context.User.Identity?.Name</MudText>
+                <MudSwitch T="bool" @bind-Value="_isDarkMode" />
+            </MudAppBar>
+            <MudMainContent>
+                <MudContainer>
+                    @Body
+                </MudContainer>
+            </MudMainContent>
+        </MudLayout>
+
+    </Authorized>
+    <NotAuthorized>
+        <MudText>
+            <LoginRedirect />
+        </MudText>
+    </NotAuthorized>
+</AuthorizeView>
+
 
 @code
 {

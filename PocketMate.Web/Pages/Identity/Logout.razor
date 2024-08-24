@@ -1,0 +1,20 @@
+﻿@page "/logout"
+@inherits LogoutPage
+@layout HeadlessLayout
+
+<PageTitle>PocketMate - Logout</PageTitle>
+
+<MudText Typo="Typo.h3">Signing out...</MudText>
+<MudPaper Class="pa-8 mt-4">
+    <div class="d-flex justify-center pb-8 pt-8">
+        <img src="images/wallet.png" alt="PocketMate" width="200" />
+    </div>
+    <MudAlert Severity="Severity.Info">
+        <div>
+            Session ended...
+            <MudButton Variant="Variant.Text" Href="/">
+                Go to login page
+            </MudButton>
+        </div>
+    </MudAlert>
+</MudPaper>

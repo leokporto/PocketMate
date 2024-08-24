@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
+using PocketMate.Core.Handlers;
 using PocketMate.Web;
+using PocketMate.Web.Handlers;
 using PocketMate.Web.Security;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -18,6 +20,7 @@ builder.Services.AddAuthorizationCore();
 
 builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();
 builder.Services.AddScoped(x => (ICookieAuthenticationStateProvider)x.GetRequiredService<AuthenticationStateProvider>());
+builder.Services.AddScoped<IAccountHandler, AccountHandler>();
 
 builder.Services.AddMudServices();
 
