@@ -30,13 +30,15 @@ namespace PocketMate.Web
             {
                 Primary = new MudColor("#32bea6"),
                 PrimaryContrastText = new MudColor("#1E2D2F"),
-                Secondary = new MudColor("#F7CB15"),                                
+                Secondary = new MudColor("#F7CB15"),      
+                Tertiary = new MudColor("#4381C1"),
                 Background = new MudColor("#FBFBFF"),
-                AppbarBackground = new MudColor("#32bea6"),
+                AppbarBackground = new MudColor("#F7CB15"),
                 AppbarText = new MudColor("#1E2D2F"),
                 TextPrimary = new MudColor("#1E2D2F"),
-                DrawerText = new MudColor("#FBFBFF"),
-                DrawerBackground = new MudColor("#4381C1"),
+                DrawerText = new MudColor("#1E2D2F"),
+                DrawerBackground = new MudColor("#32bea6"),
+                
             },
             PaletteDark = new PaletteDark
             {
