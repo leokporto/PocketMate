@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Pages\Categories\Create.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PocketMate.Core\PocketMate.Core.csproj" />
   </ItemGroup>
 
