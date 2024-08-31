@@ -2,15 +2,10 @@
 using MudBlazor;
 using PocketMate.Core.Handlers;
 using PocketMate.Core.Requests.Categories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PocketMate.Web.Pages.Categories
 {
-    public class CreatePage : ComponentBase
+    public class CreateCategoryPage : ComponentBase
     {
         #region properties
         public bool IsBusy { get; set; } = false;
@@ -20,7 +15,7 @@ namespace PocketMate.Web.Pages.Categories
 
         #region services
         [Inject]
-        public ICategoryHandler CategoryHandler { get; set; } = null!;
+        public ICategoryHandler Handler { get; set; } = null!;
 
         [Inject]
         public NavigationManager NavigationManager { get; set; } = null!;
@@ -36,7 +31,7 @@ namespace PocketMate.Web.Pages.Categories
 
             try
             { 
-                var response = await CategoryHandler.CreateAsync(InputModel);
+                var response = await Handler.CreateAsync(InputModel);
 
                 if (response.IsSuccess)
                 {

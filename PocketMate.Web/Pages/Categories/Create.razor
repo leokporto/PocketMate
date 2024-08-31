@@ -1,5 +1,5 @@
 ﻿@page "/categories/add"
-@inherits CreatePage
+@inherits CreateCategoryPage
 
 <MudText Typo="Typo.h3">New category</MudText>
 <MudPaper Class="pa-8 mt-4">
@@ -9,6 +9,6 @@
         <MudTextField @bind-Value="InputModel.Description" Label="Description" 
             HelperText="Required field" For="@(()=>InputModel.Description)" />
 
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" Type="Submit">Save</MudButton>
+        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Save</MudButton>
     </EditForm>
 </MudPaper>

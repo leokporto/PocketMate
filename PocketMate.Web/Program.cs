@@ -20,7 +20,6 @@ builder.Services.AddAuthorizationCore();
 
 builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();
 builder.Services.AddScoped(x => (ICookieAuthenticationStateProvider)x.GetRequiredService<AuthenticationStateProvider>());
-builder.Services.AddScoped<IAccountHandler, AccountHandler>();
 
 builder.Services.AddMudServices();
 
@@ -30,5 +29,8 @@ builder.Services
         options.BaseAddress = new Uri(Configuration.BackendUrl);
     })
     .AddHttpMessageHandler<CookieHandler>();
+
+builder.Services.AddScoped<IAccountHandler, AccountHandler>();
+builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
 
 await builder.Build().RunAsync();
