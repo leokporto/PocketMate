@@ -8,9 +8,27 @@
     <MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/categories/add" StartIcon="@Icons.Material.Sharp.Add">Add category</MudButton>
 </div>
 
-<MudDataGrid Items="@CategoriesList" Class="mt-4">
+<MudDataGrid Items="@CategoriesList" Class="mt-4"
+    Filterable="true" QuickFilter="Filter" Hideable="true">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Categories</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="SearchTerm" Placeholder="Filter..."
+            Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search"
+            Immediate="true" IconSize="Size.Medium" Class="mt-0" />
+    </ToolBarContent>
     <Columns>
         <PropertyColumn Property="x => x.Id" Title="#" />
         <PropertyColumn Property="x => x.Title" Title="Title" />
+        <TemplateColumn Class="d-flex justify-end">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" 
+                        Href="@($"/categories/edit/{context.Item.Id}")" Size="Size.Small"></MudIconButton>
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small"
+                        OnClick="() => OnDeleteButtonClickedAsync(context.Item.Id, context.Item.Title)"></MudIconButton>
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
     </Columns>
 </MudDataGrid>

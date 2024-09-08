@@ -5,7 +5,7 @@ using PocketMate.Core.Requests.Categories;
 
 namespace PocketMate.Web.Pages.Categories
 {
-    public class CreateCategoryPage : ComponentBase
+    public partial class CreateCategoryPage : ComponentBase
     {
         #region properties
         public bool IsBusy { get; set; } = false;
