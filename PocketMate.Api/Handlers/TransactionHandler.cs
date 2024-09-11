@@ -22,9 +22,9 @@ namespace PocketMate.Api.Handlers
 				{
 					UserId = request.UserId,
 					CategoryId = request.CategoryId,
-					CreatedAt = DateTime.Now,
+					CreatedAt = DateTime.UtcNow,
 					Amount = request.Amount,
-					AccountedAt = request.PaidOrReceivedAt,
+					AccountedAt = request.PaidOrReceivedAt?.ToUniversalTime(),
 					Title = request.Title,
 					Type = request.Type
 				};
@@ -58,7 +58,7 @@ namespace PocketMate.Api.Handlers
 				transaction.Amount = request.Amount;
 				transaction.Title = request.Title;
 				transaction.Type = request.Type;
-				transaction.AccountedAt = request.PaidOrReceivedAt;
+				transaction.AccountedAt = request.PaidOrReceivedAt?.ToUniversalTime();
 
 				context.Transactions.Update(transaction);
 				await context.SaveChangesAsync();

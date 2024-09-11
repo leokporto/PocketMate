@@ -1,0 +1,30 @@
+﻿@page "/transactions/new"
+@inherits CreateTransactionPage
+
+
+<MudText Typo="Typo.h3">New transaction</MudText>
+
+<MudPaper Class="pa-8 mt-4">
+    <EditForm Model="@InputModel" OnValidSubmit="OnValidSubmitAsync">
+        <DataAnnotationsValidator />
+        <MudTextField @bind-Value="InputModel.Title" Label="Title"
+                      HelperText="Required field" For="@(()=>InputModel.Title)" />
+       
+        <MudTextField T="decimal" Format="C" @bind-Value="InputModel.Amount" Label="Amount"
+                      Variant="Variant.Text" HelperText="Required field" For="@(()=>InputModel.Amount)" />
+        <MudDatePicker @bind-Date="InputModel.PaidOrReceivedAt" Label="Date" />
+        <MudSelect T="eTransactionType" @bind-Value="InputModel.Type" Label="Transaction Type" AnchorOrigin="Origin.BottomCenter">
+            <MudSelectItem T="eTransactionType" Value="eTransactionType.Deposit">Deposit</MudSelectItem>
+            <MudSelectItem T="eTransactionType" Value="eTransactionType.Withdraw">Withdraw</MudSelectItem>
+
+        </MudSelect>
+
+        <MudSelect T="long" Label="Category" @bind-Value="InputModel.CategoryId" AnchorOrigin="Origin.BottomCenter">
+            @foreach (var category in Categories)
+            {
+                <MudSelectItem T="long" Value="@category.Id">@category.Title</MudSelectItem>
+            }   
+        </MudSelect>
+        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="mt-4">Save</MudButton>
+    </EditForm>
+</MudPaper>

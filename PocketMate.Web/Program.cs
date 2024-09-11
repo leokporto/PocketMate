@@ -6,6 +6,7 @@ using PocketMate.Core.Handlers;
 using PocketMate.Web;
 using PocketMate.Web.Handlers;
 using PocketMate.Web.Security;
+using System.Globalization;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -30,7 +31,12 @@ builder.Services
     })
     .AddHttpMessageHandler<CookieHandler>();
 
-builder.Services.AddScoped<IAccountHandler, AccountHandler>();
+builder.Services.AddTransient<IAccountHandler, AccountHandler>();
+builder.Services.AddTransient<ITransactionHandler, TransactionHandler>();
 builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
+
+builder.Services.AddLocalization();
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
+CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
 
 await builder.Build().RunAsync();
