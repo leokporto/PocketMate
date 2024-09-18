@@ -74,7 +74,7 @@ namespace PocketMate.Web.Pages.Transactions
                 if (response.IsSuccess)
                 {
                     Snackbar.Add("Transaction created successfully", Severity.Success);
-                    NavigationManager.NavigateTo("/transactions");
+                    NavigationManager.NavigateTo("/transactions/history");
                 }
                 else
                 {

@@ -3,6 +3,7 @@ using MudBlazor;
 using PocketMate.Core.Common.Extensions;
 using PocketMate.Core.Handlers;
 using PocketMate.Core.Models;
+using PocketMate.Core.Requests.Categories;
 using PocketMate.Core.Requests.Transactions;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace PocketMate.Web.Pages.Transactions
         #region events
         protected async override Task OnInitializedAsync()
         {
-            await GetTransactions();
+            await GetTransactionsAsync();
         }
         #endregion
 
@@ -69,7 +70,7 @@ namespace PocketMate.Web.Pages.Transactions
             return false;
         };
 
-        private async Task GetTransactions()
+        private async Task GetTransactionsAsync()
         {
             IsBusy = true;
 
@@ -100,6 +101,52 @@ namespace PocketMate.Web.Pages.Transactions
 
             
         }
+
+        public async Task OnDeleteButtonClickedAsync(long id, string title)
+        {
+            var result = await DialogService.ShowMessageBox("Warning",
+                                $"The {title} transaction will be permanently removed. Do you want to proceed?",
+                                yesText: "Remove", cancelText: "Cancel");
+
+            if (result == true)
+                await OnDeleteAsync(id);
+
+            StateHasChanged();
+        }
+
+        public async Task OnDeleteAsync(long id)
+        {
+            IsBusy = true;
+            try
+            {
+                var result = await TransactionHandler.DeleteAsync(new DeleteTransactionRequest { Id = id });
+
+                if (result.IsSuccess)
+                {
+                    Transactions.RemoveAll(x => x.Id == id);
+                    Snackbar.Add("Transaction removed successfully", Severity.Success);
+                }
+                else
+                {
+                    Snackbar.Add(result.Message, Severity.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                Snackbar.Add(ex.Message, Severity.Error);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public async Task OnSearchAsync()
+        {
+            await GetTransactionsAsync();
+            StateHasChanged();
+        }
+
         #endregion
     }
 }

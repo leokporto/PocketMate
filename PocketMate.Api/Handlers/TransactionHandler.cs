@@ -130,9 +130,9 @@ namespace PocketMate.Api.Handlers
 					.Transactions
 					.AsNoTracking()
 					.Where(x =>
-						x.AccountedAt >= request.StartDate &&
-						x.AccountedAt <= request.EndDate &&
-						x.UserId == request.UserId)
+                        x.AccountedAt.Value.DateTime.ToLocalTime() >= request.StartDate &&
+                        x.AccountedAt.Value.DateTime.ToLocalTime() <= request.EndDate &&
+                        x.UserId == request.UserId)
 					.OrderBy(x => x.AccountedAt);
 
 				var transactions = await query

@@ -3,6 +3,25 @@
 
 <MudText Typo="Typo.h3">Transactions history</MudText>
 
+<div class="d-flex justify-end mt-4 mb-4">
+    <MudSelect T="int" Label="Month" @bind-Value="CurrentMonth" AnchorOrigin="Origin.BottomCenter" Class="mr-4">
+        @for (var month = 1; month <= 12; month++)
+        {
+            var date = new DateTime(DateTime.Now.Year, month, 1);
+            <MudSelectItem T="int" Value="@month">@(date.ToString("MMMM"))</MudSelectItem>    
+        }
+    </MudSelect>
+    <MudSelect T="int" Label="Year" @bind-Value="CurrentYear" AnchorOrigin="Origin.BottomCenter">
+        @foreach(var year in Years)
+        {
+            <MudSelectItem T="int" Value="@year">@year</MudSelectItem>
+        }
+    </MudSelect>
+    <MudSpacer />
+    <MudButton Size="Size.Small" Variant="Variant.Filled" Color="Color.Primary" 
+        StartIcon="@Icons.Material.Filled.Search" OnClick="OnSearchAsync">Search</MudButton>
+</div>
+
 <MudDataGrid Items="@Transactions"
     Filterable="false"
     QuickFilter="Filter"
@@ -39,12 +58,22 @@
             <CellTemplate>
                 @if (context.Item.AccountedAt.HasValue)
                 {
-                    <MudText>context.Item.AccountedAt.Value.ToLocalTime().ToString("dd/MM/yyyy");</MudText>
+                    <MudText>@context.Item.AccountedAt.Value.ToLocalTime().ToString("dd/MM/yyyy")</MudText>
                 }
                 else
                 {
                     <MudText></MudText>
                 }
+            </CellTemplate>
+        </TemplateColumn>
+        <TemplateColumn Class="d-flex justify-end">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" Href="@($"/transactions/edit/{context.Item.Id}")" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small"
+                        aria-label="Excluir" 
+                        OnClick="() => OnDeleteButtonClickedAsync(context.Item.Id, context.Item.Title)" />
+                </MudStack>
             </CellTemplate>
         </TemplateColumn>
     </Columns>
