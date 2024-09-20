@@ -1,0 +1,58 @@
+﻿@page "/transactions/edit/{TransactionId}"
+@inherits EditTransactionPage
+
+<MudText Typo="Typo.h3">Editar Lançamento</MudText>
+
+<MudPaper Class="pa-8 mt-4">
+    <EditForm Model="@InputModel" OnValidSubmit="OnValidSubmitAsync">
+        <DataAnnotationsValidator />
+
+        <MudTextField Label="Title"
+                      HelperText="Required field"
+                      @bind-Value="InputModel.Title"
+                      For="@(() => InputModel.Title)" />
+
+        <MudTextField Label="Ammount"
+                      T="decimal"
+                      Format="C"
+                      Variant="Variant.Text"
+                      HelperText="Fill in with the ammount to be paid or received"
+                      @bind-Value="InputModel.Amount"
+                      For="@(() => InputModel.Amount)" />
+
+        <MudDatePicker Label="When"
+                       @bind-Date="@InputModel.PaidOrReceivedAt"
+                       HelperText="Fill in with the date of the transaction" />
+
+        <MudSelect T="eTransactionType"
+                   Label="Type"
+                   AnchorOrigin="Origin.BottomCenter"
+                   @bind-Value="InputModel.Type">
+            <MudSelectItem T="eTransactionType" Value="eTransactionType.Deposit">
+                In
+            </MudSelectItem>
+            <MudSelectItem T="eTransactionType" Value="eTransactionType.Withdraw">
+                Out
+            </MudSelectItem>
+        </MudSelect>
+
+        <MudSelect T="long"
+                   Label="Category"
+                   @bind-Value="InputModel.CategoryId"
+                   AnchorOrigin="Origin.BottomCenter">
+            @foreach (var category in Categories)
+            {
+                <MudSelectItem T="long" Value="@category.Id">
+                    @category.Title
+                </MudSelectItem>
+            }
+        </MudSelect>
+
+        <MudButton ButtonType="ButtonType.Submit"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   Class="mt-4">
+            Salvar
+        </MudButton>
+    </EditForm>
+</MudPaper>
