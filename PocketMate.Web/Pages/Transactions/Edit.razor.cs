@@ -94,7 +94,7 @@ namespace PocketMate.Web.Pages.Transactions
                     InputModel = new UpdateTransactionRequest
                     {
                         CategoryId = result.Data.CategoryId,
-                        PaidOrReceivedAt = result.Data.AccountedAt.Value.DateTime,
+                        PaidOrReceivedAt = result.Data.AccountedAt,
                         Title = result.Data.Title,
                         Type = result.Data.Type,
                         Amount = result.Data.Amount,

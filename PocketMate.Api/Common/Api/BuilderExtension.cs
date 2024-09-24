@@ -44,7 +44,7 @@ namespace PocketMate.Api.Common.Api
 		{
 			builder.Services
 				.AddDbContext<AppDbContext>(
-					x => { x.UseNpgsql(Configuration.ConnectionString); });
+					x => { x.UseSqlServer(Configuration.ConnectionString); });
 
 			builder.Services
 				.AddIdentityCore<User>()

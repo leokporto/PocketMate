@@ -22,9 +22,9 @@ namespace PocketMate.Api.Handlers
 				{
 					UserId = request.UserId,
 					CategoryId = request.CategoryId,
-					CreatedAt = DateTime.UtcNow,
+					CreatedAt = DateTime.Now,
 					Amount = request.Amount,
-					AccountedAt = request.PaidOrReceivedAt?.ToUniversalTime(),
+					AccountedAt = request.PaidOrReceivedAt,
 					Title = request.Title,
 					Type = request.Type
 				};
@@ -58,7 +58,7 @@ namespace PocketMate.Api.Handlers
 				transaction.Amount = request.Amount;
 				transaction.Title = request.Title;
 				transaction.Type = request.Type;
-				transaction.AccountedAt = request.PaidOrReceivedAt?.ToUniversalTime();
+				transaction.AccountedAt = request.PaidOrReceivedAt;
 
 				context.Transactions.Update(transaction);
 				await context.SaveChangesAsync();
@@ -130,8 +130,8 @@ namespace PocketMate.Api.Handlers
 					.Transactions
 					.AsNoTracking()
 					.Where(x =>
-                        x.AccountedAt.Value.DateTime.ToLocalTime() >= request.StartDate &&
-                        x.AccountedAt.Value.DateTime.ToLocalTime() <= request.EndDate &&
+                        x.AccountedAt >= request.StartDate &&
+                        x.AccountedAt <= request.EndDate &&
                         x.UserId == request.UserId)
 					.OrderBy(x => x.AccountedAt);
 
